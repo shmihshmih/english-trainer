@@ -200,7 +200,7 @@ a.navbar-brand {
 /***    left menu ****/
 
 /***********************  TOP Bar ********************/
-.sidebar{ width:220px;  background-color:#000;transition: all 0.5s  ease-in-out; }
+.sidebar{ width:220px;  background-color:#000;transition: all 0.5s  ease-in-out; display: inline-block;}
 .bg-defoult{background-color:#222;}
 .sidebar ul{ list-style:none; margin:0px; padding:0px; }
 .sidebar li a,.sidebar li a.collapsed.active{ display:block; padding:8px 12px; color:#fff;border-left:0px solid #dedede;  text-decoration:none}
@@ -282,10 +282,6 @@ a.navbar-brand {
 
 .fliph .user-panel{ display: none; }
 
-.mamain {
-    float: right;
-}
-
 .clearfix:after {
     content: " "; /* Older browser do not support empty content */
     visibility: hidden;
@@ -294,7 +290,16 @@ a.navbar-brand {
     clear: both;
  }
 
+.mamain {
+    display: inline-block;
+    margin-top: 0px;
+    padding: 0px;
+    position: absolute;
+}
 
+.giant-text {
+    font-size: 30px;
+}
 /*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors

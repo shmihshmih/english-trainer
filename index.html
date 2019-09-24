@@ -9,13 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="index.css">
-    <title>Hello, world!</title>
+    <title>Languages trainer</title>
   </head>
   <body>
-
-
-
-
         <!--===================
         Header
         =======================-->
@@ -166,12 +162,10 @@
               </nav>
             </header>
 
-
-
+<div class="clearfix"></div>
 
             <div class="main">
 
-              <aside>
                 <div class="sidebar left ">
                   <div class="user-panel">
                     <div class="pull-left image">
@@ -241,30 +235,49 @@
           </ul>
           </div>
 
-          
-          </aside>
-
-          <div class="clearfix"></div>
-
           <div class="mamain">
-              <h1>Hello, world!</h1>
-              <p id="exercise"></p>
-              <button id="startExercise" onClick="checkConstrustor()">PRESS TO START</button>
-            </div>
-          <div class="clearfix"></div>
-
+            <table class="table">
+              <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Местоимение:</th>
+                    <th scope="col">Глагол:</th>
+                    <th scope="col">Время:</th>
+                    <th scope="col">Тип:</th>
+                </tr>
+                    <tr>
+                      <th scope="row">Задача:</th>
+                      <td id="pronounCell" class="giant-text h2">
+                      </td>
+                      <td id="verbCell"    class="giant-text h2">
+                      </td>
+                      <td id="timeCell"    class="giant-text h2">
+                      </td>
+                      <td id="senTypeCell" class="giant-text h2">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Ответ:</th>
+                      <td id="answerCell"  class="giant-text h2" colspan="4">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <button id="startExercise">
+                            press to start\next
+                          </button>
+                      </td>
+                      <td>
+                        <button id="showHideAnswer">
+                          show answer
+                        </button>
+                      </td>
+                    </tr>
+              </thead>
+            </table>
           </div>
 
-
-
-
-
-
-          
-
-
-
-
+          </div>
 <!-- Footer -->
 <section id="footer">
 		<div class="container">

@@ -12,12 +12,12 @@ let pronouns = [
 
 //обычные глаголы
 let regularVerbs = [
-    {id:1, russianSide:"начинать",       englishSide:"start",  stressedLastVowel: true},
+    {id:1, russianSide:"начинать",       englishSide:"start",  stressedLastVowel: false},
     {id:2, russianSide:"любить",         englishSide:"love",   stressedLastVowel: false},
     {id:3, russianSide:"прыгать",        englishSide:"jump",   stressedLastVowel: true},
     {id:4, russianSide:"летать",         englishSide:"fly",    stressedLastVowel: true},
     {id:5, russianSide:"звонить(звать)", englishSide:"call",   stressedLastVowel: true},
-    {id:6, russianSide:"помогать",       englishSide:"help",   stressedLastVowel: true},
+    {id:6, russianSide:"помогать",       englishSide:"help",   stressedLastVowel: false},
     {id:7, russianSide:"игнорировать",   englishSide:"ignore", stressedLastVowel: false},
     {id:8, russianSide:"управлять",      englishSide:"manage", stressedLastVowel: false},
     {id:9, russianSide:"соглашаться",    englishSide:"agree",  stressedLastVowel: false},
@@ -53,15 +53,17 @@ function checkConstrustor() {
     let verb = regularVerbs[Math.floor(Math.random()*regularVerbs.length)];
     let time = times[Math.floor(Math.random()*times.length)];
     let senType = senTypes[Math.floor(Math.random()*senTypes.length)];
+    let senConstractedArr = [];
 
-    console.log( 
-        pronoun["russianSide"] + " " +
-        verb["russianSide"] + " " +
-        time["russianSide"] + " " +
-        senType["russianSide"]
-    );
-
-    this.sentenceCreator(pronoun, verb, time, senType);
+    senConstractedArr = {
+        pronounRus:pronoun["russianSide"],
+        verbRus:verb["russianSide"],
+        timeRus:time["russianSide"],
+        senTypeRus:senType["russianSide"],
+        correctEngSen: this.sentenceCreator(pronoun, verb, time, senType),
+        verbEng: verb["englishSide"]
+    };
+    return senConstractedArr;
 };
 
 //создание правильного ответа
@@ -74,13 +76,13 @@ function sentenceCreator(pronoun, verb, time, senType) {
         //type
         if(senType["englishSide"] == "negative") {
             //pronoun
-            console.log(pronoun.englishSide + " did not " + verb.englishSide)
+            return (pronoun.englishSide + " did not " + verb.englishSide);
         } else if (senType["englishSide"] == "affirmative") {
             //pronoun
-            console.log(pronoun.englishSide + " " + returnE(verb))
+            return (pronoun.englishSide + " " + returnE(verb));
         } else {
             //pronoun
-            console.log("did " + pronoun.englishSide + " " + verb.englishSide)
+            return ("did " + pronoun.englishSide + " " + verb.englishSide);
         }
     } 
     //time present
@@ -89,23 +91,23 @@ function sentenceCreator(pronoun, verb, time, senType) {
         if(senType["englishSide"] == "negative") {
             //pronoun
             if((pronoun["englishSide"] == "he") || (pronoun["englishSide"] == "she") || (pronoun["englishSide"] == "it")) {
-                console.log(pronoun.englishSide + " doesn't (does not) " + verb.englishSide);
+                return (pronoun.englishSide + " doesn't (does not) " + verb.englishSide);
             } else {
-                console.log(pronoun.englishSide + " don't (do not) " + verb.englishSide)
+                return (pronoun.englishSide + " don't (do not) " + verb.englishSide);
             }
         } else if (senType["englishSide"] == "affirmative") {
             //pronoun
             if((pronoun["englishSide"] == "he") || (pronoun["englishSide"] == "she") || (pronoun["englishSide"] == "it")) {
-                console.log(pronoun.englishSide + " " + verb.englishSide + "'s");
+                return (pronoun.englishSide + " " + verb.englishSide + "'s");
             } else {
-                console.log(pronoun.englishSide + " " + verb.englishSide)
+                return (pronoun.englishSide + " " + verb.englishSide);
             }
         } else {
             //pronoun
             if((pronoun["englishSide"] == "he") || (pronoun["englishSide"] == "she") || (pronoun["englishSide"] == "it")) {
-                console.log("does " + pronoun.englishSide + " " + verb.englishSide);
+                return ("does " + pronoun.englishSide + " " + verb.englishSide);
             } else {
-                console.log("do " + pronoun.englishSide + " " + verb.englishSide)
+                return ("do " + pronoun.englishSide + " " + verb.englishSide);
             }
         }
     } 
@@ -114,13 +116,13 @@ function sentenceCreator(pronoun, verb, time, senType) {
            //type
            if(senType["englishSide"] == "negative") {
                //pronoun
-               console.log(pronoun.englishSide + " will not " + verb.englishSide)
+               return (pronoun.englishSide + " will not " + verb.englishSide);
            } else if (senType["englishSide"] == "affirmative") {
                //pronoun
-               console.log(pronoun.englishSide + " will " + verb.englishSide)
+               return (pronoun.englishSide + " will " + verb.englishSide);
            } else {
                //pronoun
-               console.log("will " + pronoun.englishSide + " " + verb.englishSide)
+               return ("will " + pronoun.englishSide + " " + verb.englishSide);
            }
     }
 }
