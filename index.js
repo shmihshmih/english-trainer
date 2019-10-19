@@ -7,14 +7,53 @@ let correctVerb = "";
 
 //местоимения
 let pronouns = [
-    {id:1, russianSide: "Я",   englishSide:"I"},
-    {id:2, russianSide: "Ты",  englishSide:"you"},
-    {id:3, russianSide: "Вы",  englishSide:"you"},
-    {id:4, russianSide: "Мы",  englishSide:"we"},
-    {id:5, russianSide: "Они", englishSide:"they"},
-    {id:6, russianSide: "Она", englishSide:"she"},
-    {id:7, russianSide: "Он",  englishSide:"he"},
-    {id:8, russianSide: "Это", englishSide:"it"},
+    {id:1, russianSide: "Я",                    englishSide:"I", 
+           posessiveEnglish:"my",               posessiveRussian:"мой", 
+           absolutePosessiveEnglish:"mine",     absolutePosessiveRussian:"мой", 
+           objectCaseEnglish:"me",              objectCaseRussian:"мне",
+           reflexiveEnglish:"myself",           reflexiveRussian:"меня"},
+
+    {id:2, russianSide: "Ты",  englishSide:"you",
+           posessiveEnglish:"your",             posessiveRussian:"твой", 
+           absolutePosessiveEnglish:"yours",    absolutePosessiveRussian:"твой", 
+           objectCaseEnglish:"you",             objectCaseRussian:"тебе",
+           reflexiveEnglish:"yourself",         reflexiveRussian:"тебя"},
+
+    {id:3, russianSide: "Вы",  englishSide:"you", 
+           posessiveEnglish:"your",             posessiveRussian:"ваш", 
+           absolutePosessiveEnglish:"yours",    absolutePosessiveRussian:"ваш", 
+           objectCaseEnglish:"you",             objectCaseRussian:"вам",
+           reflexiveEnglish:"yourselves",       reflexiveRussian:"вас"},
+
+    {id:4, russianSide: "Мы",  englishSide:"we",
+           posessiveEnglish:"our",              posessiveRussian:"ваш", 
+           absolutePosessiveEnglish:"ours",     absolutePosessiveRussian:"ваш", 
+           objectCaseEnglish:"us",              objectCaseRussian:"нам",
+           reflexiveEnglish:"ourselves",        reflexiveRussian:"нас"},
+
+    {id:5, russianSide: "Они", englishSide:"they",
+           posessiveEnglish:"their",            posessiveRussian:"их", 
+           absolutePosessiveEnglish:"theirs",   absolutePosessiveRussian:"их", 
+           objectCaseEnglish:"them",            objectCaseRussian:"им",
+           reflexiveEnglish:"themselves",       reflexiveRussian:"их"},
+
+    {id:6, russianSide: "Она", englishSide:"she",
+           posessiveEnglish:"her",              posessiveRussian:"её", 
+           absolutePosessiveEnglish:"hers",     absolutePosessiveRussian:"её", 
+           objectCaseEnglish:"her",             objectCaseRussian:"ей",
+           reflexiveEnglish:"herself",          reflexiveRussian:"её"},
+
+    {id:7, russianSide: "Он",  englishSide:"he",
+           posessiveEnglish:"his",              posessiveRussian:"его", 
+           absolutePosessiveEnglish:"his",      absolutePosessiveRussian:"его", 
+           objectCaseEnglish:"him",             objectCaseRussian:"ему",
+           reflexiveEnglish:"himself",          reflexiveRussian:"его"},
+
+    {id:8, russianSide: "Это", englishSide:"it",
+           posessiveEnglish:"its",              posessiveRussian:"его", 
+           absolutePosessiveEnglish:"its",      absolutePosessiveRussian:"его", 
+           objectCaseEnglish:"its",             objectCaseRussian:"ему",
+           reflexiveEnglish:"itself",           reflexiveRussian:"его"},
 ];
 
 //обычные глаголы
@@ -159,10 +198,34 @@ let senTypes = [
     {id: 3, englishSide:"interrogative", russianSide:"Вопросительное"},
 ];
 
+//слова для игр и заучивания
+let firstStepWords = [
+    "I","You","He","We","They","It","Speak","Do","Big","Open","Close","See","Go","Know","Love",
+    "Revolution","Information","Ask","Take","Answer","Help","Travel","Me","Him","Us","Them","Hope",
+    "Who","Where","When","How","In","To","Well","Mean","Hello","Here","Free","Happy","Name","Surname",
+    "My","His","Her","Our","Hungry","Pregnant    Pretty","Crazy","Cute","Art","Study","Public","Relations",
+    "Library","Write","Book","Non-fiction","Novel","Play","Role","Character","Director","Freelancer",
+    "Student","Jewel","Order","Designer","Hi","Good afternoon","After","Before","Good evening","Dear",
+    "Thanks","Welcome","Nice","Meet","Pardon","Forgive me","Excuse me","Factory","Call center",
+    "Grocery store","Office","Hospital","School","This","A","An","Apologize","Regret","Late",
+    "Goodbye","Bye","Take care","See you","Fare well","Waiter","Seller","Senior manager","Supervisor",
+    "Teacher","Be","Of","But","That","Have","Not","With","As","Or","Will","All","About","Which","Make",
+    "Like","Time","People","Some","Other","Than","Now","Look","Only","Also","Use","First","Even","New",
+    "Want","Give","","Day","Thing","She","Good morning","Fiction","Live","Good night","Movie","Work",
+    "Please","Script","Come","Sorry","Jewelry","Barf","Restaurant","Then","Give","Bank","Think","Speak",
+    "The","Way","Her","One","Because","What","For","life","Why","So long","If","From","Worker","Can",
+    "Okey","Nurse","Their","Independent","And","Fat","Your","For","History","Museum","By","Year",
+    "Monday","Tuesday","Webnesday","Thursday","Friday","Saturday","Sunday","January","February",
+    "March","April","May","June","July","August","September","October","November","December",
+    "Maybe","Serious","Stand","Understand","Bad","Read","Black","Blue","One","Two","Three",
+    "Four","Five","Six","Seven","Eight","Nine","Ten","Watermelon","Apple","Banana","Avocado",
+    "Kiwi","Lime","Lemon","Melon","Apricot","Orange","Club","small","Happy","sad"];
+
 //создание задания
 function checkConstrustor() {
     let pronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
-    let verb = regularVerbs[Math.floor(Math.random()*regularVerbs.length)];
+    //берем глагол из обычных либо необычных на рандоме
+    let verb = Math.random()>0.5 ? irRegularVerbs[Math.floor(Math.random()*irRegularVerbs.length)] : regularVerbs[Math.floor(Math.random()*regularVerbs.length)];
     let time = times[Math.floor(Math.random()*times.length)];
     let senType = senTypes[Math.floor(Math.random()*senTypes.length)];
     let senConstractedArr = [];
@@ -188,7 +251,7 @@ function sentenceCreator(pronoun, verb, time, senType) {
         //type
         if(senType["englishSide"] == "negative") {
             //pronoun
-            return (pronoun.englishSide + " did not " + verb.englishSide);
+            return (pronoun.englishSide + " didn't " + verb.englishSide);
         } else if (senType["englishSide"] == "affirmative") {
             //pronoun
             return (pronoun.englishSide + " " + returnE(verb));
@@ -203,9 +266,9 @@ function sentenceCreator(pronoun, verb, time, senType) {
         if(senType["englishSide"] == "negative") {
             //pronoun
             if((pronoun["englishSide"] == "he") || (pronoun["englishSide"] == "she") || (pronoun["englishSide"] == "it")) {
-                return (pronoun.englishSide + " doesn't (does not) " + verb.englishSide);
+                return (pronoun.englishSide + " doesn't " + verb.englishSide);
             } else {
-                return (pronoun.englishSide + " don't (do not) " + verb.englishSide);
+                return (pronoun.englishSide + " don't " + verb.englishSide);
             }
         } else if (senType["englishSide"] == "affirmative") {
             //pronoun
@@ -243,15 +306,7 @@ function sentenceCreator(pronoun, verb, time, senType) {
 function returnS(verb) {
     let lastLetter = verb.englishSide[verb.englishSide.length-1];
     let preLastLetter = verb.englishSide[verb.englishSide.length-2];
-    //если заканчивается на y, и предпоследняя буква согласная, то окончание меняется на ies
-    if (lastLetter == "y") {
-        for (let i = 0; i < glas.length; i++) {
-            if(preLastLetter == glas[i]) {
-                this.correctVerb = verb.englishSide.substring(0, verb.englishSide.length-1) + "ies";
-                break;
-            }
-        }
-    }
+    
     //если кончается на s x z o ss sh ch то окончанием становится es
     if ((lastLetter == "s") 
         || ((lastLetter) == "x")
@@ -263,8 +318,18 @@ function returnS(verb) {
     ) {
         this.correctVerb = verb.englishSide + "es";
     } else {
-        //по умолчанию просто s
-        this.correctVerb = verb.englishSide + "s";
+    //если заканчивается на y, и предпоследняя буква согласная, то окончание меняется на ies
+        if (lastLetter == "y") {
+            for (let i = 0; i < soglas.length; i++) {
+                if(preLastLetter == soglas[i]) {
+                    this.correctVerb = verb.englishSide.substring(0, verb.englishSide.length-1) + "ies";
+                    break;
+                }
+            }
+        } else {
+            //по умолчанию просто s
+            this.correctVerb = verb.englishSide + "s";
+        }
     }
     return this.correctVerb; 
 }
@@ -273,36 +338,41 @@ function returnS(verb) {
 function returnE(verb) {
     let lastLetter = verb.englishSide[verb.englishSide.length-1];
     let preLastLetter = verb.englishSide[verb.englishSide.length-2];
-    
-    //если кончается на e или ee - просто добавляется d
-    if ((verb.englishSide[verb.englishSide.length-1] == "e") || (verb.englishSide.substring(verb.englishSide.length-2, verb.englishSide.length) == "ee")) {
-        this.correctVerb = verb.englishSide + "d";
-        //если последняя y - меняется на ied
-    } else if (lastLetter == "y") {
-        for (let i = 0; i < glas.length; i++) {
-            //если на конце y и перед ней гласная - добавляется ed
-            if(preLastLetter == glas[i]) {
-                this.correctVerb = verb.englishSide + "ed";
-                break;
-            }
-            this.correctVerb = verb.englishSide.substring(0, verb.englishSide.length-1) + "ied";
-        }
-    } else if (preLastLetter+lastLetter == "ic") {
-        //если оканчивается на ic - меняется на ick и добавляется ed
-        this.correctVerb = verb.englishSide.substring(0, verb.englishSide.length-2) + "ick" + "ed";
+
+    //если есть вторая форма (то есть если он нестандартный) то вернем ее, иначе начинаем все это
+    if (verb.secondForm) {
+        this.correctVerb = verb.secondForm;
     } else {
-        for (let i = 0; i < soglas.length-1; i++) {
-            if (lastLetter == soglas[i]) {
-                if((verb.stressedLastVowel == true) && (lastLetter != "x") && (lastLetter !="w")) {
-                    //если конец одна согласная и перед ней ударная гласная - последняя буква дублируется и добавляется ed (кроме x и w)
-                    if (verb.englishSide[verb.englishSide.length-1] == verb.englishSide[verb.englishSide.length]) {
-                        this.correctVerb = verb.englishSide + "ed";
-                        break;
-                    }
-                    this.correctVerb = verb.englishSide + verb.englishSide[verb.englishSide.length-1] + "ed";
-                } else {
-                    //если просто кончается на согласную - добавляется ed
+        //если кончается на e или ee - просто добавляется d
+        if ((verb.englishSide[verb.englishSide.length-1] == "e") || (verb.englishSide.substring(verb.englishSide.length-2, verb.englishSide.length) == "ee")) {
+            this.correctVerb = verb.englishSide + "d";
+            //если последняя y - меняется на ied
+        } else if (lastLetter == "y") {
+            for (let i = 0; i < glas.length; i++) {
+                //если на конце y и перед ней гласная - добавляется ed
+                if(preLastLetter == glas[i]) {
                     this.correctVerb = verb.englishSide + "ed";
+                    break;
+                }
+                this.correctVerb = verb.englishSide.substring(0, verb.englishSide.length-1) + "ied";
+            }
+        } else if (preLastLetter+lastLetter == "ic") {
+            //если оканчивается на ic - меняется на ick и добавляется ed
+            this.correctVerb = verb.englishSide.substring(0, verb.englishSide.length-2) + "ick" + "ed";
+        } else {
+            for (let i = 0; i < soglas.length-1; i++) {
+                if (lastLetter == soglas[i]) {
+                    if((verb.stressedLastVowel == true) && (lastLetter != "x") && (lastLetter !="w")) {
+                        //если конец одна согласная и перед ней ударная гласная - последняя буква дублируется и добавляется ed (кроме x и w)
+                        if (verb.englishSide[verb.englishSide.length-1] == verb.englishSide[verb.englishSide.length]) {
+                            this.correctVerb = verb.englishSide + "ed";
+                            break;
+                        }
+                        this.correctVerb = verb.englishSide + verb.englishSide[verb.englishSide.length-1] + "ed";
+                    } else {
+                        //если просто кончается на согласную - добавляется ed
+                        this.correctVerb = verb.englishSide + "ed";
+                    }
                 }
             }
         }

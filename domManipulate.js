@@ -9,9 +9,10 @@ $('button#startExercise').click(function(){
     start1Ex();
 });
 
+//заполняем ячейки словами
 function start1Ex() {
     showHideAnswer(true);
-    //гдлбальная переменная
+    //глобальная переменная
     window.senConstracted = checkConstrustor();
     pronounCell.html(senConstracted['pronounRus']);
     verbCell.html(senConstracted['verbRus']+ " (" +senConstracted["verbEng"] + ")");
@@ -24,13 +25,18 @@ function showHideAnswer(state) {
         answerCell.hide();
     } else {
         answerCell.show();
-        answerCell.html(window.senConstracted['correctEngSen']);
+        answerCell.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + window.senConstracted['correctEngSen']);
     }
 }
 
 //скрывает\показывает ячейку с ответом
 $('button#showHideAnswer').click(function(){
     showHideAnswer(false);
+});
+
+//озвучка текста на английском языке
+$('td#answerCell').click(function(){
+    responsiveVoice.speak(window.senConstracted['correctEngSen']);
 });
 
 //для пульта
