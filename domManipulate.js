@@ -9,6 +9,11 @@ $('button#startExercise').click(function(){
     start1Ex();
 });
 
+//при нажатии щелкается вперед смена за сменой
+$('button#nextExercise').click(function(){
+    pressToNext();
+});
+
 //заполняем ячейки словами
 function start1Ex() {
     showHideAnswer(true);
@@ -43,13 +48,17 @@ $('td#answerCell').click(function(){
 window.state = 0;
 $( "html" ).keydown(function(e) {
     if (e.which == 190) {
-            if (window.state === 0) {
+        pressToNext();
+    }
+});
+
+//функция безостановочного переключения
+function pressToNext() {
+    if (window.state === 0) {
         window.state = 1;
         start1Ex();
     } else {
         window.state = 0;
         showHideAnswer(false);
     }
-    }
-});
-
+}
