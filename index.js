@@ -435,31 +435,23 @@ let adjectives = [
 ];
 
 //создание задания Simple Sentences
-function checkConstrustor() {
-    function create_selectedArrWithVerbs() {
-        return Math.random()>0.5 ? irRegularVerbs : regularVerbs ;
-    }
-    function create_selectedVerbFromArr() {
-        return Math.floor(Math.random()*selectedArrWithVerbs.length);
-    }
-    function create_verb() {
-        return selectedArrWithVerbs.splice(selectedVerbFromArr, 1);
-    }
+async function checkConstrustor() {
     let pronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
     //берем глагол из обычных либо необычных на рандоме
-    let selectedArrWithVerbs =   create_selectedArrWithVerbs();
-    let selectedVerbFromArr =  create_selectedVerbFromArr();
-    let verb =  create_verb();
+    let selectedArrWithVerbs =  Math.random()>0.5 ? irRegularVerbs : regularVerbs;
+    let selectedVerbFromArr =  Math.floor(Math.random()*selectedArrWithVerbs.length);
+    let verb =  selectedArrWithVerbs.splice(selectedVerbFromArr, 1)[0];
     let time = times[Math.floor(Math.random()*times.length)];
     let senType = senTypes[Math.floor(Math.random()*senTypes.length)];
     let senConstractedArr = [];
+    let correctEngSen = await sentenceCreator(pronoun, verb, time, senType)
     
     senConstractedArr = {
         pronounRus:pronoun["russianSide"],
         verbRus:verb["russianSide"],
         timeRus:time["russianSide"],
         senTypeRus:senType["russianSide"],
-        correctEngSen: this.sentenceCreator(pronoun, verb, time, senType),
+        correctEngSen: correctEngSen,
         verbEng: verb["englishSide"]
     };
     return senConstractedArr;
@@ -483,8 +475,10 @@ function wordCardCreator() {
 }
 
 //создание правильного ответа Simple Sentences
-function sentenceCreator(pronoun, verb, time, senType) {
-    if (verb.englishSide || (verb.englishSide[verb.englishSide.length-1] == "e") || (verb.englishSide[verb.englishSide.length-2] == "ee")) {
+async function sentenceCreator(pronoun, verb, time, senType) {
+    if (verb || verb != undefined || verb.englishSide || (verb.englishSide[verb.englishSide.length-1] == "e") || (verb.englishSide[verb.englishSide.length-2] == "ee")) {
+    } else {
+        //console.log("sorry");
     }
     //time -> type -> pronoun
     //time past
@@ -659,13 +653,17 @@ $('button#showHideAnswer').click(function(){
 
 
 //заполняем ячейки словами
-function start1Ex() {
+async function start1Ex() {
     showHideAnswer(true);
-    senConstracted = checkConstrustor();
-    pronounCell.html(senConstracted['pronounRus']);
-    verbCell.html(senConstracted['verbRus']+ " (" +senConstracted["verbEng"] + ")");
-    timeCell.html(senConstracted['timeRus']);
-    senTypeCell.html(senConstracted['senTypeRus']);
+    const senConstracted = await checkConstrustor();
+    if(senConstracted) {
+        pronounCell.html(senConstracted['pronounRus']);
+        verbCell.html(senConstracted['verbRus']+ " (" +senConstracted["verbEng"] + ")");
+        timeCell.html(senConstracted['timeRus']);
+        senTypeCell.html(senConstracted['senTypeRus']);
+        answerCell.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + senConstracted['correctEngSen']);
+    }
+
 }
 //если в ячейке есть ответ, она скрывается, если нет - появляется с новым ответом
 function showHideAnswer(state) {
@@ -673,7 +671,6 @@ function showHideAnswer(state) {
         answerCell.hide();
     } else {
         answerCell.show();
-        answerCell.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + senConstracted['correctEngSen']);
     }
 }
 
