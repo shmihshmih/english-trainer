@@ -676,9 +676,15 @@ $('button#showHideAnswer').click(function(){
 async function start1Ex() {
     showHideAnswer(true);
     const senConstracted = await checkConstrustor();
+    let translatedPartVerb;
+    if($("#showEnglishSideVerb").prop("checked")) {
+        translatedPartVerb = " (" +senConstracted["verbEng"]+ ")";
+    } else {
+        translatedPartVerb = "";
+    }
     if(senConstracted) {
         pronounCell.html(senConstracted['pronounRus']);
-        verbCell.html(senConstracted['verbRus']+ " (" +senConstracted["verbEng"] + ")");
+        verbCell.html(senConstracted['verbRus'] + translatedPartVerb);
         timeCell.html(senConstracted['timeRus']);
         senTypeCell.html(senConstracted['senTypeRus']);
         answerCell.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + senConstracted['correctEngSen']);
