@@ -13,8 +13,98 @@
   <body>
       <div class="main">
           <div class="mamain">
-
-            <table class="table boldborder table-sm">
+            <h1>
+              1. Генератор примеров:
+            </h1>
+            <table class="table boldborder m-0" id="simpleConstructor">
+              <thead>
+                <tr>
+                  <td>
+                      Местоимение:
+                  </td>
+                  <td id="pronounCell" class="giant-text h2" colspan="4">
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                      Глагол:
+                  </td>
+                  <td id="verbCell"    class="giant-text h2" colspan="4">
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                      Время:
+                  </td>
+                  <td id="timeCell"    class="giant-text h2" colspan="4">
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                      Тип:
+                  </td>
+                  <td id="senTypeCell" class="giant-text h2" colspan="4">
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                    Ответ
+                  </td>
+                  <td id="answerCell"  class="giant-text h2" colspan="4">
+                    <div id="pp"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                      <button id="startExercise" style="display: none;">
+                        Начать
+                      </button>
+                      <button id="nextExercise" >
+                        Следующий
+                      </button>
+                      <button id="showHideAnswer">
+                        Ответ
+                     </button>
+                     <button id="showHidePolyglotTable">
+                      Таблица
+                    </button>
+                    <button id="firstExSettings">
+                      Настройки:
+                    </button>
+                    <button id="helpFor1Ex">
+                      Помощь
+                    </button>
+                    </td>
+                  </tr>
+                  <tr id="settingsForFirstEx">
+                    <td colspan="5">
+                      <div>
+                        <div><input type="checkbox" id="repeatingVerbs" checked="checked"> Не повторять глаголы</div>
+                        <div><input type="checkbox" id="showEnglishSideVerb" checked="checked">Показывать перевод глагола</div>
+                        <div>Скорость воспроизведения:
+                          1<input type="radio" name="speechRate" value="0.5">
+                          2<input type="radio" name="speechRate" value="1" checked="checked">
+                          3<input type="radio" name="speechRate" value="1.5">
+                        </div>
+                        <div>
+                          Высота голоса:
+                          1<input type="radio" name="speechPitch" value="0.5">
+                          2<input type="radio" name="speechPitch" value="1" checked="checked">
+                          3<input type="radio" name="speechPitch" value="1.5">
+                        </div>
+                        <div>
+                          Голос: 
+                          UK мужской <input type="radio" name="speechVoice" value="UK English Male" checked="checked">
+                          UK женский <input type="radio" name="speechVoice" value="UK English Female">
+                          US мужской <input type="radio" name="speechVoice" value="US English Male">
+                          US женский <input type="radio" name="speechVoice" value="US English Female">
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+              </thead>
+            </table>
+            <table id="simplePolyglotTable" class="table boldborder table-sm">
               <tbody>
                 <tr class="table-info boldborder">
                   <td class="boldborder">
@@ -267,91 +357,6 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
-
-            <table class="table boldborder" id="simpleConstructor">
-              <thead>
-                  <tr>
-                      <td>
-                          Настройки:
-                      </td>
-                      <td colspan="4">
-                        <div><input type="checkbox" id="repeatingVerbs" checked="checked"> Не повторять глаголы</div>
-                        <div><input type="checkbox" id="showEnglishSideVerb" checked="checked">Показывать перевод глагола</div>
-                        <div>Скорость воспроизведения:
-                          1<input type="radio" name="speechRate" value="0.5">
-                          2<input type="radio" name="speechRate" value="1" checked="checked">
-                          3<input type="radio" name="speechRate" value="1.5">
-                        </div>
-                        <div>
-                          Высота голоса:
-                          1<input type="radio" name="speechPitch" value="0.5">
-                          2<input type="radio" name="speechPitch" value="1" checked="checked">
-                          3<input type="radio" name="speechPitch" value="1.5">
-                        </div>
-                        <div>
-                          Голос: 
-                          UK мужской <input type="radio" name="speechVoice" value="UK English Male" checked="checked">
-                          UK женский <input type="radio" name="speechVoice" value="UK English Female">
-                          US мужской <input type="radio" name="speechVoice" value="US English Male">
-                          US женский <input type="radio" name="speechVoice" value="US English Female">
-                        </div>
-                      </td>
-                    </tr>
-                <tr>
-                  <td>
-                      Местоимение:
-                  </td>
-                  <td id="pronounCell" class="giant-text h2" colspan="4">
-                    </td>
-                </tr>
-                <tr>
-                  <td>
-                      Глагол:
-                  </td>
-                  <td id="verbCell"    class="giant-text h2" colspan="4">
-                    </td>
-                </tr>
-                <tr>
-                  <td>
-                      Время:
-                  </td>
-                  <td id="timeCell"    class="giant-text h2" colspan="4">
-                    </td>
-                </tr>
-                <tr>
-                  <td>
-                      Тип:
-                  </td>
-                  <td id="senTypeCell" class="giant-text h2" colspan="4">
-                    </td>
-                </tr>
-                <tr>
-                  <td>
-                    Ответ
-                  </td>
-                  <td id="answerCell"  class="giant-text h2" colspan="4">
-                    <div id="pp"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="1">
-                        <button id="startExercise">
-                          start
-                        </button>
-                    </td>
-                    <td colspan="2">
-                      <button id="nextExercise" >
-                          next
-                      </button>
-                    </td>
-                    <td colspan="2">
-                      <button id="showHideAnswer">
-                        answer
-                      </button>
-                    </td>
-                  </tr>
-              </thead>
             </table>
 
 

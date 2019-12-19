@@ -168,20 +168,20 @@ let irRegularVerbs = [
     {id: 102, russianSide:"кормить",                englishSide:"feed",       secondForm:"fed",        thirdForm:"fed"},
     {id: 103, russianSide:"расти",                  englishSide:"grow",       secondForm:"grew",       thirdForm:"grown"},
     {id: 104, russianSide:"вешать",                 englishSide:"hang",       secondForm:"hung",       thirdForm:"hung"},
-    {id: 105, russianSide:"скрывать",               englishSide:"hide	",    secondForm:"hid",        thirdForm:"hidden"},
-    {id: 105, russianSide:"держать пари",           englishSide:"bet	",    secondForm:"bet",        thirdForm:"bet"},
-    {id: 105, russianSide:"держать",                englishSide:"hold	",    secondForm:"held",       thirdForm:"held"},
-    {id: 105, russianSide:"причинить боль",         englishSide:"hurt	",    secondForm:"hurt",       thirdForm:"hurt"},
-    {id: 105, russianSide:"скакать",                englishSide:"ride	",    secondForm:"rode",       thirdForm:"ridden"},
-    {id: 105, russianSide:"подниматься",            englishSide:"rise	",    secondForm:"rose",       thirdForm:"risen"},
-    {id: 105, russianSide:"встряхивать",            englishSide:"shake	",    secondForm:"shook",      thirdForm:"shaken"},
-    {id: 105, russianSide:"воровать",               englishSide:"steal	",    secondForm:"stole",      thirdForm:"stolen"},
-    {id: 105, russianSide:"сиять",                  englishSide:"shine	",    secondForm:"shone",      thirdForm:"shone"},
-    {id: 105, russianSide:"сливать",                englishSide:"sink	",    secondForm:"sank",       thirdForm:"sunk"},
-    {id: 105, russianSide:"скользить",              englishSide:"slide	",    secondForm:"slid",       thirdForm:"slid"},
-    {id: 105, russianSide:"скакать",                englishSide:"spring	",    secondForm:"sprang",     thirdForm:"sprung"},
-    {id: 105, russianSide:"придерживаться",         englishSide:"stick	",    secondForm:"stuck",      thirdForm:"stuck"},
-    {id: 105, russianSide:"подметать",              englishSide:"sweep	",    secondForm:"swept",      thirdForm:"swept"},
+    {id: 105, russianSide:"скрывать",               englishSide:"hide",       secondForm:"hid",        thirdForm:"hidden"},
+    {id: 105, russianSide:"держать пари",           englishSide:"bet",        secondForm:"bet",        thirdForm:"bet"},
+    {id: 105, russianSide:"держать",                englishSide:"hold",       secondForm:"held",       thirdForm:"held"},
+    {id: 105, russianSide:"причинить боль",         englishSide:"hurt",       secondForm:"hurt",       thirdForm:"hurt"},
+    {id: 105, russianSide:"скакать",                englishSide:"ride",       secondForm:"rode",       thirdForm:"ridden"},
+    {id: 105, russianSide:"подниматься",            englishSide:"rise",       secondForm:"rose",       thirdForm:"risen"},
+    {id: 105, russianSide:"встряхивать",            englishSide:"shake",      secondForm:"shook",      thirdForm:"shaken"},
+    {id: 105, russianSide:"воровать",               englishSide:"steal",      secondForm:"stole",      thirdForm:"stolen"},
+    {id: 105, russianSide:"сиять",                  englishSide:"shine",      secondForm:"shone",      thirdForm:"shone"},
+    {id: 105, russianSide:"сливать",                englishSide:"sink",       secondForm:"sank",       thirdForm:"sunk"},
+    {id: 105, russianSide:"скользить",              englishSide:"slide",      secondForm:"slid",       thirdForm:"slid"},
+    {id: 105, russianSide:"скакать",                englishSide:"spring",     secondForm:"sprang",     thirdForm:"sprung"},
+    {id: 105, russianSide:"придерживаться",         englishSide:"stick",      secondForm:"stuck",      thirdForm:"stuck"},
+    {id: 105, russianSide:"подметать",              englishSide:"sweep",      secondForm:"swept",      thirdForm:"swept"},
 ];
 
 //времена
@@ -645,6 +645,9 @@ let answerCell = $("td#answerCell #pp");
 
 let questionWordCard = $("div#questionWordCard");
 let answerWordCard = $("div#answerWordCard");
+let simplePolyglotTable = $("#simplePolyglotTable");
+let firstExSettings = $("#firstExSettings");
+let helpFor1Ex = $("#helpFor1Ex");
 
 //при нажатии создаются русское и английское предложение
 $('button#startExercise').click(function(){
@@ -747,4 +750,25 @@ function pressToNext() {
 //проверка чекбокса на повторение глагола в простом конструкторе
 $("#repeatingVerbs").click(function(){
     console.log($("#repeatingVerbs").prop("checked"));
+});
+
+//показывает или скрывает таблицу полиглота
+$("#showHidePolyglotTable").click(function() {
+    $("#simplePolyglotTable").toggle();
+});
+
+//показывает скрывает настройки для первого упражнения
+firstExSettings.click(function() {
+    $("#settingsForFirstEx").toggle();
+});
+
+//подсказка для занимающихся первым упражнением
+helpFor1Ex.click(function() {
+    alert("Первое упражнение создано для тренировки времен и для запоминания глаголов. Оно работает по принципу, который был представлен в телепередаче \"Полиглот\". Для начала упражнения нажмите кнопку \"Следующий\". Программа случайным образом генерирует местоимение, глагол, время и тип предложения. После того, как вы составите предложение, нажимайте на кнопку \"Следующий\" и вы увидите ответ. Для прослушивания ответа нужно нажать на кнопку с динамиком. Если вы забыли табличку, можно нажать на кнопку \"Таблица\", и чуть ниже она появится. В настройках можно изменить параметры генерации упражнения и настройки голоса. Приятной тренировки! Для критики, пожеланий, предложений: shmihshmih@gmail.com");
+});
+
+//при загрузке документа ready
+$(document).ready(function(){
+    $("#simplePolyglotTable").hide();
+    $("#settingsForFirstEx").hide();
 });
