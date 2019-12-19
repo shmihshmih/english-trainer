@@ -438,7 +438,8 @@ let adjectives = [
 async function checkConstrustor() {
     let pronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
     //берем глагол из обычных либо необычных на рандоме
-    let selectedArrWithVerbs ;
+    let selectedArrWithVerbs;
+    let verb;
 
     if((irRegularVerbs.length != 0) && (regularVerbs.length != 0)) {
         selectedArrWithVerbs =  Math.random()>0.5 ? irRegularVerbs : regularVerbs;
@@ -457,7 +458,13 @@ async function checkConstrustor() {
     }
 
     let selectedVerbFromArr =  Math.floor(Math.random()*selectedArrWithVerbs.length);
-    let verb =  selectedArrWithVerbs.splice(selectedVerbFromArr, 1)[0];
+
+    if ($("#repeatingVerbs").prop("checked")) {
+        verb = selectedArrWithVerbs.splice(selectedVerbFromArr, 1)[0];
+    } else {
+        verb = Math.random()>0.5 ? irRegularVerbs[Math.floor(Math.random()*irRegularVerbs.length)] : regularVerbs[Math.floor(Math.random()*regularVerbs.length)];
+    }
+
     let time = times[Math.floor(Math.random()*times.length)];
     let senType = senTypes[Math.floor(Math.random()*senTypes.length)];
     let senConstractedArr = [];
@@ -704,7 +711,12 @@ $('button#showHideAnswer').click(function(){
 
 //озвучка текста на английском языке
 $('td#answerCell').click(function(){
-    responsiveVoice.speak(answerCell.text());
+    //скорость воспроизведения rate 0.5 1 1.5
+    //высота голоса pitch 0.5 1 1.5
+    let speechRate = $("input[name=speechRate]:checked").val();
+    let speechPitch = $("input[name=speechPitch]:checked").val();
+    let speechVoice = $("input[name=speechVoice]:checked").val();
+    responsiveVoice.speak(answerCell.text(), speechVoice, {pitch:speechPitch, rate: speechRate});
 });
 
 //для пульта
@@ -728,10 +740,5 @@ function pressToNext() {
 
 //проверка чекбокса на повторение глагола в простом конструкторе
 $("#repeatingVerbs").click(function(){
-    //console.log($("#repeatingVerbs").prop("checked"));
+    console.log($("#repeatingVerbs").prop("checked"));
 });
-
-function checkRepeatingVerbs() {
-  
-    
-}

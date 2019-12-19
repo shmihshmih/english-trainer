@@ -276,9 +276,26 @@
                           Настройки:
                       </td>
                       <td colspan="4">
-                        <input type="checkbox" id="repeatingVerbs" checked="checked"> Не повторять глаголы
-                        <div>Скорость воспроизведения</div>
-                        <div>Голос: мужской женский</div>
+                        <div><input type="checkbox" id="repeatingVerbs" checked="checked"> Не повторять глаголы</div>
+                        <div><input type="checkbox" id="showEnglishSideVerb" checked="checked">Показывать перевод глагола</div>
+                        <div>Скорость воспроизведения:
+                          1<input type="radio" name="speechRate" value="0.5">
+                          2<input type="radio" name="speechRate" value="1" checked="checked">
+                          3<input type="radio" name="speechRate" value="1.5">
+                        </div>
+                        <div>
+                          Высота голоса:
+                          1<input type="radio" name="speechPitch" value="0.5">
+                          2<input type="radio" name="speechPitch" value="1" checked="checked">
+                          3<input type="radio" name="speechPitch" value="1.5">
+                        </div>
+                        <div>
+                          Голос: 
+                          UK мужской <input type="radio" name="speechVoice" value="UK English Male" checked="checked">
+                          UK женский <input type="radio" name="speechVoice" value="UK English Female">
+                          US мужской <input type="radio" name="speechVoice" value="US English Male">
+                          US женский <input type="radio" name="speechVoice" value="US English Female">
+                        </div>
                       </td>
                     </tr>
                 <tr>
