@@ -434,6 +434,7 @@ let adjectives = [
     {id:"100", englishSide:"young",        russianSide:"молодой",        englishTranscription:"[jʌŋ]",             synonym:"", antonym:""},
 ];
 
+//1x funcs
 //создание задания Simple Sentences
 async function checkConstrustor() {
     let pronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
@@ -491,11 +492,6 @@ function checkWordCard(arr) {
         englishSide: arr["englishSide"]
     };
     return wordCardConstractedArr;
-}
-
-//создание правильного ответа Word Card
-function wordCardCreator() {
-    
 }
 
 //создание правильного ответа Simple Sentences
@@ -635,16 +631,51 @@ function returnE(verb) {
     return this.correctVerb;
 }
 
+//2ex func
+//создание правильного ответа Word Card
+let nextWordCard = $("button#nextWordCard");
+let answerWordCardButton = $("button#answerWordCardButton");
+let settingWordCard = $("button#settingWordCard");
+let helpWordCard = $("button#helpWordCard");
+let questionWordCard = $("div#questionWordCard");
+let answerWordCard = $("div#answerWordCard");
+let wordArrs = ["pronouns", "regularVerbs", "irRegularVerbs", "times", "senTypes", "animals", "adjectives"];
+let settingsForSecondEx = $("tr#settingsForSecondEx");
+let checkboxesChoosenWords2ex;
+
+nextWordCard.click(function() {
+    wordCardCreator(wordArrs);
+});
+
+answerWordCardButton.click(function() {
+    answerWordCardToggle();
+});
+
+helpWordCard.click(function() {
+    wordCardHelper();
+});
+
+function wordCardCreator(wordsArrs) {
+    checkboxesChoosenWords2ex = $("div#checkboxesChoosenWords2ex input[type=checkbox]:checked");
+    console.log(checkboxesChoosenWords2ex);
+}
+
+function wordCardHelper() {
+    alert("а здесь функционал распишем прям!");
+}
+
+function answerWordCardToggle() {
+    answerWordCard.toggle();
+}
 
 //manioulations with DOM
+//1ex
 let pronounCell = $("td#pronounCell");
 let verbCell = $("td#verbCell");
 let timeCell = $("td#timeCell");
 let senTypeCell = $("td#senTypeCell");
 let answerCell = $("td#answerCell #pp");
 
-let questionWordCard = $("div#questionWordCard");
-let answerWordCard = $("div#answerWordCard");
 let simplePolyglotTable = $("#simplePolyglotTable");
 let firstExSettings = $("#firstExSettings");
 let helpFor1Ex = $("#helpFor1Ex");
@@ -657,16 +688,6 @@ $('button#startExercise').click(function(){
 //при нажатии щелкается вперед смена за сменой
 $('button#nextExercise').click(function(){
     pressToNext();
-});
-
-//при нажатии выбирается слово
-$().click(function() {
-
-});
-
-//при нажатии щелкается смена за сменой
-$().click(function() {
-
 });
 
 //скрывает\показывает ячейку с ответом
@@ -700,16 +721,6 @@ function showHideAnswer(state) {
         answerCell.hide();
     } else {
         answerCell.show();
-    }
-}
-
-//если в ячейке есть ответ, она скрывается, если нет - появляется с новым ответом
-function showHideWordCard(state) {
-    if (state === true) {
-        answerWordCard.hide();
-    } else {
-        answerWordCard.show();
-        answerWordCard.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + senConstracted['correctEngSen']);
     }
 }
 
@@ -762,7 +773,7 @@ firstExSettings.click(function() {
     $("#settingsForFirstEx").toggle();
 });
 
-//подсказка для занимающихся первым упражнением в
+//подсказка для занимающихся первым упражнением
 helpFor1Ex.click(function() {
     alert("Первое упражнение создано для тренировки времен и для запоминания глаголов. Оно работает по принципу, который был представлен в телепередаче \"Полиглот\". Для начала упражнения нажмите кнопку \"Следующий\". Программа случайным образом генерирует местоимение, глагол, время и тип предложения. После того, как вы составите предложение, нажимайте на кнопку \"Следующий\" и вы увидите ответ. Для прослушивания ответа нужно нажать на кнопку с динамиком. Если вы забыли табличку, можно нажать на кнопку \"Таблица\", и чуть ниже она появится. В настройках можно изменить параметры генерации упражнения и настройки голоса. Приятной тренировки! Для критики, пожеланий, предложений: shmihshmih@gmail.com");
 });
@@ -771,4 +782,20 @@ helpFor1Ex.click(function() {
 $(document).ready(function(){
     $("#simplePolyglotTable").hide();
     $("#settingsForFirstEx").hide();
+    settingsForSecondEx.hide();
+});
+
+//2ex
+//если в ячейке есть ответ, она скрывается, если нет - появляется с новым ответом
+function showHideWordCard(state) {
+    if (state === true) {
+        answerWordCard.hide();
+    } else {
+        answerWordCard.show();
+        answerWordCard.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + senConstracted['correctEngSen']);
+    }
+}
+
+settingWordCard.click(function() {
+    settingsForSecondEx.toggle();
 });
