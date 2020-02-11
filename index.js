@@ -925,7 +925,7 @@ function wordCardCreator() {
     let typeOfAsk = $("input[name=typeOfAsk]:checked").val();
     if (typeOfAsk == "askEnglishSide") {
         questionWordCard.html(chosenWordEx2.englishSide);
-        answerWordCard.html(chosenWordEx2.russianSide);
+        answerWordCard.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + chosenWordEx2.russianSide);
     }
     if(typeOfAsk == "askRussianSide") {
         questionWordCard.html(chosenWordEx2.russianSide);
@@ -1003,7 +1003,7 @@ $('button#showHideAnswer').click(function(){
     showHideAnswer(false);
 });
 
-//озвучка текста на английском языке
+//озвучка текста на английском языке ex1
 $('td#answerCell').click(function(){
     //скорость воспроизведения rate 0.5 1 1.5
     //высота голоса pitch 0.5 1 1.5
@@ -1012,6 +1012,17 @@ $('td#answerCell').click(function(){
     let speechVoice = $("input[name=speechVoice]:checked").val();
     responsiveVoice.speak(answerCell.text(), speechVoice, {pitch:speechPitch, rate: speechRate});
 });
+
+//озвучка текста на английском языке ex2
+$('div#answerWordCard').click(function(){
+    //скорость воспроизведения rate 0.5 1 1.5
+    //высота голоса pitch 0.5 1 1.5
+    let speechRate = $("input[name=speechRate]:checked").val();
+    let speechPitch = $("input[name=speechPitch]:checked").val();
+    let speechVoice = $("input[name=speechVoice]:checked").val();
+    responsiveVoice.speak($('div#answerWordCard').text(), speechVoice, {pitch:speechPitch, rate: speechRate});
+});
+
 
 //для пульта
 window.state = 0;
