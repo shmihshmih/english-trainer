@@ -5,8 +5,9 @@ let soglas = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "
 //глагол в правильной форм для конструктура ответа
 let correctVerb = "";
 
+let words = {
 //местоимения
-let pronouns = [
+pronouns : [
     {id:1, russianSide: "Я",                    englishSide:"I", 
            posessiveEnglish:"my",               posessiveRussian:"мой", 
            absolutePosessiveEnglish:"mine",     absolutePosessiveRussian:"мой", 
@@ -54,11 +55,11 @@ let pronouns = [
            absolutePosessiveEnglish:"its",      absolutePosessiveRussian:"его", 
            objectCaseEnglish:"its",             objectCaseRussian:"ему",
            reflexiveEnglish:"itself",           reflexiveRussian:"его"},
-];
+],
 
 //обычные глаголы
 //если stressedLastVowel == true, то при конструкции ответа последняя буква удваивается при добавлении окончания
-let regularVerbs = [
+regularVerbs : [
     {id:1, russianSide:"начинать",       englishSide:"start",  stressedLastVowel: false},
     {id:2, russianSide:"любить",         englishSide:"love",   stressedLastVowel: false},
     {id:3, russianSide:"прыгать",        englishSide:"jump",   stressedLastVowel: false},
@@ -77,10 +78,10 @@ let regularVerbs = [
     {id:15, russianSide:"чинить",        englishSide:"fix",    stressedLastVowel: true},
     {id:15, russianSide:"расслабляться", englishSide:"relax",  stressedLastVowel: true},
     {id:16, russianSide:"паниковать",    englishSide:"panic",  stressedLastVowel: false},
-];
+],
 
 //нестандартные глаголы
-let irRegularVerbs = [
+irRegularVerbs : [
     {id: 17,  russianSide:"идти",                   englishSide:"go",         secondForm:"went",       thirdForm:"gone",    },
     {id: 18,  russianSide:"быть",                   englishSide:"be",         secondForm:"was/were",   thirdForm:"been",    },
     {id: 19,  russianSide:"становиться",            englishSide:"become",     secondForm:"became",     thirdForm:"become",  },
@@ -182,24 +183,24 @@ let irRegularVerbs = [
     {id: 105, russianSide:"скакать",                englishSide:"spring",     secondForm:"sprang",     thirdForm:"sprung"},
     {id: 105, russianSide:"придерживаться",         englishSide:"stick",      secondForm:"stuck",      thirdForm:"stuck"},
     {id: 105, russianSide:"подметать",              englishSide:"sweep",      secondForm:"swept",      thirdForm:"swept"},
-];
+],
 
 //времена
-let times = [
+times : [
     {id: 1, englishSide: "present", russianSide: "Настоящее"},
     {id: 2, englishSide: "past",    russianSide: "Прошлое"},
     {id: 3, englishSide: "future",  russianSide: "Будущее"},
-];
+],
 
 //типы предложений
-let senTypes = [
+senTypes : [
     {id: 1, englishSide:"negative",      russianSide:"отрицательное"},
     {id: 2, englishSide:"affirmative",   russianSide:"Утвердительное"},
     {id: 3, englishSide:"interrogative", russianSide:"Вопросительное"},
-];
+],
 
 //слова для игр и заучивания
-let firstStepWords = [
+firstStepWords : [
     "I","You","He","We","They","It","Speak","Do","Big","Open","Close","See","Go","Know","Love",
     "Revolution","Information","Ask","Take","Answer","Help","Travel","Me","Him","Us","Them","Hope",
     "Who","Where","When","How","In","To","Well","Mean","Hello","Here","Free","Happy","Name","Surname",
@@ -219,10 +220,11 @@ let firstStepWords = [
     "March","April","May","June","July","August","September","October","November","December",
     "Maybe","Serious","Stand","Understand","Bad","Read","Black","Blue","One","Two","Three",
     "Four","Five","Six","Seven","Eight","Nine","Ten","Watermelon","Apple","Banana","Avocado",
-    "Kiwi","Lime","Lemon","Melon","Apricot","Orange","Club","small","Happy","sad"];
+    "Kiwi","Lime","Lemon","Melon","Apricot","Orange","Club","small","Happy","sad"
+],
 
 //животные
-let animals = [
+animals : [
     {id:"1",   englishSide:"Сat",                russianSide:"Кот",                           englishTranscription:"[kæt] "},
     {id:"2",   englishSide:"Kitten",             russianSide:"Котенок",                       englishTranscription:"[kɪtn]"},
     {id:"3",   englishSide:"Dog",                russianSide:"Собака",                        englishTranscription:"[dɒɡ]"},
@@ -328,10 +330,10 @@ let animals = [
     {id:"103", englishSide:"smell",              russianSide:"Запах",                         englishTranscription:""},
     {id:"104", englishSide:"tail",               russianSide:"хвост",                         englishTranscription:""},
     {id:"105", englishSide:"paw",                russianSide:"лапа",                          englishTranscription:""}
-];
+],
 
 //прилагательные
-let adjectives = [
+adjectives : [
     {id:"1",   englishSide:"afraid",       russianSide:"боящийся",       englishTranscription:"[əˈfreɪd]",         synonym:"", antonym:""},
     {id:"2",   englishSide:"alive",        russianSide:"живой",          englishTranscription:"[əˈlaɪv]",          synonym:"", antonym:""},
     {id:"3",   englishSide:"angry",        russianSide:"сердитый",       englishTranscription:"[ˈæŋgri]",          synonym:"", antonym:""},
@@ -432,10 +434,10 @@ let adjectives = [
     {id:"98",  englishSide:"wide",         russianSide:"широкий",        englishTranscription:"[waɪd]",            synonym:"", antonym:""},
     {id:"99",  englishSide:"worried",      russianSide:"тревожный",      englishTranscription:"[ˈwʌrid]",          synonym:"", antonym:""},
     {id:"100", englishSide:"young",        russianSide:"молодой",        englishTranscription:"[jʌŋ]",             synonym:"", antonym:""},
-];
+],
 
 //from berseker
-let bersekerDictionary = [
+bersekerDictionary : [
     {id:"1",   englishSide:"stingy",        russianSide:"скупой"},
     {id:"2",   englishSide:"nourishment",   russianSide:"питание"},
     {id:"3",   englishSide:"garment",       russianSide:"одеяние"},
@@ -600,7 +602,71 @@ let bersekerDictionary = [
     {id:"162", englishSide:"bestow",        russianSide:"даровать"},
     {id:"163", englishSide:"glimpse",       russianSide:"проблеск"},
     {id:"164", englishSide:"convey",        russianSide:"транспортировать"},
-];
+],
+commonIntrodactoryPhrases: [
+    {id:"1", englishSide:"Moreover, …",        russianSide:"Более того, …"},
+    {id:"", englishSide:"Most of all, …",        russianSide:"Больше всего …	"},
+    {id:"", englishSide:"It is important to note that ...",        russianSide:"Важно отметить, что ...	"},
+    {id:"", englishSide:"It is important to remember that ...",        russianSide:"Важно помнить, что ..."},
+    {id:"", englishSide:"An important point is that ...",        russianSide:"Важным является то, что ..."},
+    {id:"", englishSide:"Аt the moment, …",        russianSide:"В данный момент, …"},
+    {id:"", englishSide:"In conclusion,...",        russianSide:"В заключение, ..."},
+    {id:"", englishSide:"After all, …",        russianSide:"В конце концов, …"},
+    {id:"", englishSide:"In any case, … / Anyway, … / Either way, …",        russianSide:"В любом случае, …"},
+    {id:"", englishSide:"Actually, ...",        russianSide:"Вообще-то, …"},
+    {id:"", englishSide:"Firstly, …",        russianSide:"Во-первых, …"},
+    {id:"", englishSide:"All in all, …",        russianSide:"В общем, …"},
+    {id:"", englishSide:"Instead of …",        russianSide:"Вместо того, чтобы …"},
+    {id:"", englishSide:"In the first place, …",        russianSide:"В первую очередь, …"},
+    {id:"", englishSide:"From time to time, …",        russianSide:"Время от времени, …"},
+    {id:"", englishSide:"Аs a result of …",        russianSide:"В результате …"},
+    {id:"", englishSide:"Indeed, …",        russianSide:"Действительно, …"},
+    {id:"", englishSide:"In order to …",        russianSide:"Для того, чтобы …"},
+    {id:"", englishSide:"I must admit, …",        russianSide:"Должен признать, …"},
+    {id:"", englishSide:"In other words, …",        russianSide:"Другими словами, …"},
+    {id:"", englishSide:"It makes sense (to) …",        russianSide:"Имеет смысл …"},
+    {id:"", englishSide:"It seems that …",        russianSide:"Кажется, (что) …"},
+    {id:"", englishSide:"In short, ... / In a nutshell, ...",        russianSide:"Короче, ... / Короче говоря, ..."},
+    {id:"", englishSide:"Besides, …",        russianSide:"Кроме того, …"},
+    {id:"", englishSide:"Luckily, … / Fortunately, …",        russianSide:"К счастью ..."},
+    {id:"", englishSide:"Unfortunately, ...",        russianSide:"К сожалению, ..."},
+    {id:"", englishSide:"In addition, ...",        russianSide:"К тому же, ..."},
+    {id:"", englishSide:"By the way, …",        russianSide:"Между прочим, … / Кстати, …"},
+    {id:"", englishSide:"I should … / I had better …",        russianSide:"Мне следовало бы …"},
+    {id:"", englishSide:"It may seem that …",        russianSide:"Может показаться, что …"},
+    {id:"", englishSide:"Finally, …",        russianSide:"Наконец, …	"},
+    {id:"", englishSide:"In fact, … / Actually, …",        russianSide:"На самом деле, …"},
+    {id:"", englishSide:"As far as I know, …",        russianSide:"Насколько я знаю …"},
+    {id:"", englishSide:"as far as I can judge, …",        russianSide:"Насколько я могу судить, …."},
+    {id:"", englishSide:"It doesn't matter that …",        russianSide:"Не важно, что …"},
+    {id:"", englishSide:"It is not surprising that... / It is no great surprise that ...",        russianSide:"Не удивительно, что ..."},
+    {id:"", englishSide:"But other than that, …",        russianSide:"Но кроме этого …"},
+    {id:"", englishSide:"However, …",        russianSide:"Однако, … / Тем не менее, …"},
+    {id:"", englishSide:"In a word, ...",        russianSide:"Одним словом, ..."},
+    {id:"", englishSide:"It turned out that …",        russianSide:"Оказалось, что ..."},
+    {id:"", englishSide:"Frankly speaking, … / To tell the truth, …",        russianSide:"Откровенно говоря, … / Честно говоря, …"},
+    {id:"", englishSide:"In my opinion, ….",        russianSide:"По моему мнению, …"},
+    {id:"", englishSide:"To tell the truth, …",        russianSide:"По правде говоря, …"},
+    {id:"", englishSide:"As a matter of fact, ...",        russianSide:"По сути дела, ...	"},
+    {id:"", englishSide:"First of all, … / Above all, …",        russianSide:"Прежде всего, …	"},
+    {id:"", englishSide:"It is self-evident that ...",        russianSide:"Само собой понятно, что ...	"},
+    {id:"", englishSide:"It goes without saying that …",        russianSide:"Само собой разумеется, что…	"},
+    {id:"", englishSide:"It should be noted that ...",        russianSide:"Следует отметить, что ...	"},
+    {id:"", englishSide:"Аt first, … / First, ...",        russianSide:"Сначала …	"},
+    {id:"", englishSide:"I advise you (to) …",        russianSide:"Советую вам …	"},
+    {id:"", englishSide:"On the one hand, ... , on the other hand, ...",        russianSide:"С одной стороны, ... , с другой стороны, ...	"},
+    {id:"", englishSide:"Also, …",        russianSide:"Также …	"},
+    {id:"", englishSide:"As well as …",        russianSide:"Так же как и …	"},
+    {id:"", englishSide:"Meanwhile, … / Meantime, …",        russianSide:"Тем временем, …"},
+    {id:"", englishSide:"Nevertheless, …",        russianSide:"Тем не менее, … / Всё-таки, … / Однако, …"},
+    {id:"", englishSide:"It is well known that ...",        russianSide:"Хорошо известно, что ..."},
+    {id:"", englishSide:"As for ... / Concerning ...",        russianSide:"Что касается ...	"},
+    {id:"", englishSide:"It can mean, that …",        russianSide:"Это может означать, что …	"},
+    {id:"", englishSide:"I would rather …",        russianSide:"Я бы предпочел …	"},
+    {id:"", englishSide:"I would like to …",        russianSide:"Я бы хотел …	"},
+    {id:"", englishSide:"I think, … / I believe, … / I guess, …",        russianSide:"Я думаю, … / Я полагаю, … / Я считаю, …	"}
+]
+}
 
 //1x funcs
 //создание задания Simple Sentences
@@ -797,6 +863,7 @@ let questionWordCard = $("div#questionWordCard");
 let answerWordCard = $("div#answerWordCard");
 let wordArrs = ["pronouns", "regularVerbs", "irRegularVerbs", "times", "senTypes", "animals", "adjectives"];
 let settingsForSecondEx = $("tr#settingsForSecondEx");
+let repeatingWords2ex;
 let checkboxesChoosenWords2ex;
 
 //создание задания Word Card
@@ -812,7 +879,7 @@ function checkWordCard(arr) {
 }
 
 nextWordCard.click(function() {
-    wordCardCreator(wordArrs);
+    showHideWordCard();
 });
 
 answerWordCardButton.click(function() {
@@ -823,9 +890,48 @@ helpWordCard.click(function() {
     wordCardHelper();
 });
 
-function wordCardCreator(wordsArrs) {
+arrUsingInEx2 = [];
+allUsingWordsEx2 = [];
+function wordCardCreator() {
     checkboxesChoosenWords2ex = $("div#checkboxesChoosenWords2ex input[type=checkbox]:checked");
-    console.log(checkboxesChoosenWords2ex);
+    //собираем все отмеченные чекбоксы-массивы
+    if (arrUsingInEx2.length == 0) {
+        for (let i = 0; i < checkboxesChoosenWords2ex.length; i++) {
+            let element = checkboxesChoosenWords2ex[i];
+            arrUsingInEx2.push(element.name.substring(0, element.name.length - 3));
+        }
+    }
+    //склеиваем один массив со всеми активными словами
+    if(allUsingWordsEx2.length == 0) {
+        for (const k in arrUsingInEx2) {
+            for (let i = 0; i < words[arrUsingInEx2[k]].length; i++) {
+                allUsingWordsEx2.push(words[arrUsingInEx2[k]][i]);
+            }
+        }
+    }
+    //выбираем случайное слово
+    chosenWordEx2 = {};
+    
+    repeatingWords2ex = $("#repeatingWords2ex").prop("checked");
+    if(repeatingWords2ex != true) {
+        //если не повторяется
+        chosenWordEx2 = allUsingWordsEx2.splice(Math.floor(Math.random()*allUsingWordsEx2.length), 1)[0];
+    } else {
+        //если повторяется
+        chosenWordEx2 = allUsingWordsEx2[Math.floor(Math.random()*allUsingWordsEx2.length)];
+    }
+
+    //вставляем слова в дивы
+    let typeOfAsk = $("input[name=typeOfAsk]:checked").val();
+    if (typeOfAsk == "askEnglishSide") {
+        questionWordCard.html(chosenWordEx2.englishSide);
+        answerWordCard.html(chosenWordEx2.russianSide);
+    }
+    if(typeOfAsk == "askRussianSide") {
+        questionWordCard.html(chosenWordEx2.russianSide);
+        answerWordCard.html(chosenWordEx2.englishSide);
+    }
+
 }
 
 function wordCardHelper() {
@@ -955,12 +1061,15 @@ $(document).ready(function(){
 
 //2ex
 //если в ячейке есть ответ, она скрывается, если нет - появляется с новым ответом
+let stateEx2 = true;
 function showHideWordCard(state) {
-    if (state === true) {
+    if (stateEx2 === true) {
         answerWordCard.hide();
+        stateEx2 = false;
+        wordCardCreator();
     } else {
         answerWordCard.show();
-        answerWordCard.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + senConstracted['correctEngSen']);
+        stateEx2 = true;
     }
 }
 
