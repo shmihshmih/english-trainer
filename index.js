@@ -671,23 +671,23 @@ commonIntrodactoryPhrases: [
 //1x funcs
 //создание задания Simple Sentences
 async function checkConstrustor() {
-    let pronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
+    let pronoun = words.pronouns[Math.floor(Math.random()*words.pronouns.length)];
     //берем глагол из обычных либо необычных на рандоме
     let selectedArrWithVerbs;
     let verb;
 
-    if((irRegularVerbs.length != 0) && (regularVerbs.length != 0)) {
-        selectedArrWithVerbs =  Math.random()>0.5 ? irRegularVerbs : regularVerbs;
+    if((words.irRegularVerbs.length != 0) && (words.regularVerbs.length != 0)) {
+        selectedArrWithVerbs =  Math.random()>0.5 ? words.irRegularVerbs : words.regularVerbs;
     } else {
-        if(irRegularVerbs.length == 0) {
-            selectedArrWithVerbs =  regularVerbs;
+        if(words.irRegularVerbs.length == 0) {
+            selectedArrWithVerbs = words.regularVerbs;
         }
-        if(regularVerbs.length == 0) {
-            selectedArrWithVerbs = irRegularVerbs;
+        if(words.regularVerbs.length == 0) {
+            selectedArrWithVerbs = words.irRegularVerbs;
         }
     }
 
-    if((irRegularVerbs.length == 0) && (regularVerbs.length == 0)) {
+    if((words.irRegularVerbs.length == 0) && (words.regularVerbs.length == 0)) {
         alert("woooh! Danilla, are you crazyyy?...!");
         location.reload();
     }
@@ -697,11 +697,11 @@ async function checkConstrustor() {
     if ($("#repeatingVerbs").prop("checked")) {
         verb = selectedArrWithVerbs.splice(selectedVerbFromArr, 1)[0];
     } else {
-        verb = Math.random()>0.5 ? irRegularVerbs[Math.floor(Math.random()*irRegularVerbs.length)] : regularVerbs[Math.floor(Math.random()*regularVerbs.length)];
+        verb = Math.random()>0.5 ? words.irRegularVerbs[Math.floor(Math.random()*words.irRegularVerbs.length)] : words.regularVerbs[Math.floor(Math.random()*words.regularVerbs.length)];
     }
 
-    let time = times[Math.floor(Math.random()*times.length)];
-    let senType = senTypes[Math.floor(Math.random()*senTypes.length)];
+    let time = words.times[Math.floor(Math.random()*words.times.length)];
+    let senType = words.senTypes[Math.floor(Math.random()*words.senTypes.length)];
     let senConstractedArr = [];
     let correctEngSen = await sentenceCreator(pronoun, verb, time, senType)
     
