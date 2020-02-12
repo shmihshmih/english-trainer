@@ -82,22 +82,22 @@
                         <div><input type="checkbox" id="repeatingVerbs" checked="checked"> Не повторять глаголы</div>
                         <div><input type="checkbox" id="showEnglishSideVerb" checked="checked">Показывать перевод глагола</div>
                         <div>Скорость воспроизведения:
-                          1<input type="radio" name="speechRate" value="0.5">
-                          2<input type="radio" name="speechRate" value="1" checked="checked">
-                          3<input type="radio" name="speechRate" value="1.5">
+                          1<input type="radio" name="speechRateEx1" value="0.5">
+                          2<input type="radio" name="speechRateEx1" value="1" checked="checked">
+                          3<input type="radio" name="speechRateEx1" value="1.5">
                         </div>
                         <div>
                           Высота голоса:
-                          1<input type="radio" name="speechPitch" value="0.5">
-                          2<input type="radio" name="speechPitch" value="1" checked="checked">
-                          3<input type="radio" name="speechPitch" value="1.5">
+                          1<input type="radio" name="speechPitchEx1" value="0.5">
+                          2<input type="radio" name="speechPitchEx1" value="1" checked="checked">
+                          3<input type="radio" name="speechPitchEx1" value="1.5">
                         </div>
                         <div>
                           Голос: 
-                          UK мужской <input type="radio" name="speechVoice" value="UK English Male" checked="checked">
-                          UK женский <input type="radio" name="speechVoice" value="UK English Female">
-                          US мужской <input type="radio" name="speechVoice" value="US English Male">
-                          US женский <input type="radio" name="speechVoice" value="US English Female">
+                          UK мужской <input type="radio" name="speechVoiceEx1" value="UK English Male" checked="checked">
+                          UK женский <input type="radio" name="speechVoiceEx1" value="UK English Female">
+                          US мужской <input type="radio" name="speechVoiceEx1" value="US English Male">
+                          US женский <input type="radio" name="speechVoiceEx1" value="US English Female">
                         </div>
                       </div>
                     </td>
@@ -361,22 +361,26 @@
 
 
             <h1>2. Карточки слов</h1>
-            <table class="table boldborder" id="wordCards">
+            <table class="table boldborder m-0" id="wordCards">
               <thead>
                 <tr>
-                  <td>
+                  <td>Дано:</td>
+                  <td class="giant-text h2">
                     <div id="questionWordCard">
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <div id="answerWordCard">
+                    Ответ:
+                  </td>
+                  <td>
+                    <div class="giant-text h2" id="answerWordCard">
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  <td colspan="2">
                     <button id="nextWordCard">Следующий</button>
                     <button id="answerWordCardButton">Ответ</button>
                     <button id="settingWordCard">Настройки</button>
@@ -388,21 +392,23 @@
                     <div>
                       <div id="checkboxesChoosenWords2ex">
                         Используемые слова: 
-                          <input type="checkbox" name="animalsEX2"             checked="checked"> Животные
-                          <input type="checkbox" name="regularVerbsEX2"        checked="checked"> Глаголы стандартные
-                          <input type="checkbox" name="irRegularVerbsEX2"      checked="checked"> Глаголы нестандартные
-                          <input type="checkbox" name="pronounsEX2"            checked="checked"> Местоимения
-                          <input type="checkbox" name="timesEX2"               checked="checked"> Время
-                          <input type="checkbox" name="senTypesEX2"            checked="checked"> Типы предложений
-                          <input type="checkbox" name="adjectivesEX2"          checked="checked"> Прилагательные
-                          <input type="checkbox" name="bersekerDictionaryEX2"  checked="checked"> Berserk
-                          <input type="checkbox" name="commonIntrodactoryPhrasesEX2" checked="checked"> Вводные фразы
+                        <ol>
+                          <li><input type="checkbox" name="animalsEX2"                   checked="checked"> Животные</li>
+                          <li><input type="checkbox" name="regularVerbsEX2"              checked="checked"> Глаголы стандартные</li>
+                          <li><input type="checkbox" name="irRegularVerbsEX2"            checked="checked"> Глаголы нестандартные</li>
+                          <li><input type="checkbox" name="pronounsEX2"                  checked="checked"> Местоимения</li>
+                          <li><input type="checkbox" name="timesEX2"                     checked="checked"> Время</li>
+                          <li><input type="checkbox" name="senTypesEX2"                  checked="checked"> Типы предложений</li>
+                          <li><input type="checkbox" name="adjectivesEX2"                checked="checked"> Прилагательные</li>
+                          <li><input type="checkbox" name="bersekerDictionaryEX2"        checked="checked"> Berserk</li>
+                          <li><input type="checkbox" name="commonIntrodactoryPhrasesEX2" checked="checked"> Вводные фразы</li>
+                        </ol>
                       </div>
                       <div><input type="checkbox" id="repeatingWords2ex" checked="checked"> Повторять слова</div>
                       <div>Скорость воспроизведения:
-                        1<input type="radio" name="speechRate2ex" value="0.5">
-                        2<input type="radio" name="speechRate2ex" value="1" checked="checked">
-                        3<input type="radio" name="speechRate2ex" value="1.5">
+                        1<input type="radio" name="speechRateEx2" value="0.5">
+                        2<input type="radio" name="speechRateEx2" value="1" checked="checked">
+                        3<input type="radio" name="speechRateEx2" value="1.5">
                       </div>
                       <div>
                         Тип карточек:
@@ -411,16 +417,16 @@
                       </div>
                       <div>
                         Высота голоса:
-                        1<input type="radio" name="speechPitch2ex" value="0.5">
-                        2<input type="radio" name="speechPitch2ex" value="1" checked="checked">
-                        3<input type="radio" name="speechPitch2ex" value="1.5">
+                        1<input type="radio" name="speechPitchEx2" value="0.5">
+                        2<input type="radio" name="speechPitchEx2" value="1" checked="checked">
+                        3<input type="radio" name="speechPitchEx2" value="1.5">
                       </div>
                       <div>
                         Голос: 
-                        UK мужской <input type="radio" name="speechVoice2ex" value="UK English Male" checked="checked">
-                        UK женский <input type="radio" name="speechVoice2ex" value="UK English Female">
-                        US мужской <input type="radio" name="speechVoice2ex" value="US English Male">
-                        US женский <input type="radio" name="speechVoice2ex" value="US English Female">
+                        UK мужской <input type="radio" name="speechVoiceEx2" value="UK English Male" checked="checked">
+                        UK женский <input type="radio" name="speechVoiceEx2" value="UK English Female">
+                        US мужской <input type="radio" name="speechVoiceEx2" value="US English Male">
+                        US женский <input type="radio" name="speechVoiceEx2" value="US English Female">
                       </div>
                     </div>
                   </td>

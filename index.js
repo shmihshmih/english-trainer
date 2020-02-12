@@ -864,6 +864,7 @@ let answerWordCard = $("div#answerWordCard");
 let wordArrs = ["pronouns", "regularVerbs", "irRegularVerbs", "times", "senTypes", "animals", "adjectives"];
 let settingsForSecondEx = $("tr#settingsForSecondEx");
 let repeatingWords2ex;
+let allCheckboxesWords2ex = $("div#checkboxesChoosenWords2ex input[type=checkbox]");
 let checkboxesChoosenWords2ex;
 
 //создание задания Word Card
@@ -893,13 +894,14 @@ helpWordCard.click(function() {
 arrUsingInEx2 = [];
 allUsingWordsEx2 = [];
 function wordCardCreator() {
-    checkboxesChoosenWords2ex = $("div#checkboxesChoosenWords2ex input[type=checkbox]:checked");
-    //собираем все отмеченные чекбоксы-массивы
+    repeatingWords2ex = $("#repeatingWords2ex").prop("checked");
+    if (allUsingWordsEx2.length == 0 && repeatingWords2ex == false) {
+        alert("woooh! Danilla, are you crazyyy?...!");
+        location.reload();
+    }
+    //если слов нет, собираем
     if (arrUsingInEx2.length == 0) {
-        for (let i = 0; i < checkboxesChoosenWords2ex.length; i++) {
-            let element = checkboxesChoosenWords2ex[i];
-            arrUsingInEx2.push(element.name.substring(0, element.name.length - 3));
-        }
+        collectAllUsedCheckboxesEx2();
     }
     //склеиваем один массив со всеми активными словами
     if(allUsingWordsEx2.length == 0) {
@@ -912,7 +914,6 @@ function wordCardCreator() {
     //выбираем случайное слово
     chosenWordEx2 = {};
     
-    repeatingWords2ex = $("#repeatingWords2ex").prop("checked");
     if(repeatingWords2ex != true) {
         //если не повторяется
         chosenWordEx2 = allUsingWordsEx2.splice(Math.floor(Math.random()*allUsingWordsEx2.length), 1)[0];
@@ -924,18 +925,28 @@ function wordCardCreator() {
     //вставляем слова в дивы
     let typeOfAsk = $("input[name=typeOfAsk]:checked").val();
     if (typeOfAsk == "askEnglishSide") {
-        questionWordCard.html(chosenWordEx2.englishSide);
-        answerWordCard.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + chosenWordEx2.russianSide);
+        questionWordCard.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + chosenWordEx2.englishSide);
+        answerWordCard.html( chosenWordEx2.russianSide);
     }
     if(typeOfAsk == "askRussianSide") {
         questionWordCard.html(chosenWordEx2.russianSide);
-        answerWordCard.html(chosenWordEx2.englishSide);
+        answerWordCard.html("<button><i class='fa fa-volume-up fa-1x' aria-hidden='true'></i></button>     " + chosenWordEx2.englishSide);
     }
 
 }
 
+function collectAllUsedCheckboxesEx2() {
+    arrUsingInEx2 = [];
+    allUsingWordsEx2 = [];
+    //собираем все отмеченные чекбоксы-массивы
+    for (let i = 0; i < $("div#checkboxesChoosenWords2ex input[type=checkbox]:checked").length; i++) {
+        let element = $("div#checkboxesChoosenWords2ex input[type=checkbox]:checked")[i];
+        arrUsingInEx2.push(element.name.substring(0, element.name.length - 3));
+    }
+}
+
 function wordCardHelper() {
-    alert("а здесь функционал распишем прям!");
+    alert("Второе упражнение создано для тренировки слов. В строке \"Дано\" указывается то, что спрашивается. В строке \"Ответ\" - правильный вариант. В настройках можно выбрать списки слов, которые будут использованы в упражнении. Можно выбрать будут ли повторяться слова. Можно выбрать будет ли проверяться русский или английский перевод. Приятной тренировки! Для критики, пожеланий, предложений: shmihshmih@gmail.com ");
 }
 
 function answerWordCardToggle() {
@@ -1007,9 +1018,9 @@ $('button#showHideAnswer').click(function(){
 $('td#answerCell').click(function(){
     //скорость воспроизведения rate 0.5 1 1.5
     //высота голоса pitch 0.5 1 1.5
-    let speechRate = $("input[name=speechRate]:checked").val();
-    let speechPitch = $("input[name=speechPitch]:checked").val();
-    let speechVoice = $("input[name=speechVoice]:checked").val();
+    let speechRate = $("input[name=speechRateEx1]:checked").val();
+    let speechPitch = $("input[name=speechPitchEx1]:checked").val();
+    let speechVoice = $("input[name=speechVoiceEx1]:checked").val();
     responsiveVoice.speak(answerCell.text(), speechVoice, {pitch:speechPitch, rate: speechRate});
 });
 
@@ -1017,12 +1028,21 @@ $('td#answerCell').click(function(){
 $('div#answerWordCard').click(function(){
     //скорость воспроизведения rate 0.5 1 1.5
     //высота голоса pitch 0.5 1 1.5
-    let speechRate = $("input[name=speechRate]:checked").val();
-    let speechPitch = $("input[name=speechPitch]:checked").val();
-    let speechVoice = $("input[name=speechVoice]:checked").val();
+    let speechRate = $("input[name=speechRateEx2]:checked").val();
+    let speechPitch = $("input[name=speechPitchEx2]:checked").val();
+    let speechVoice = $("input[name=speechVoiceEx2]:checked").val();
     responsiveVoice.speak($('div#answerWordCard').text(), speechVoice, {pitch:speechPitch, rate: speechRate});
 });
 
+//озвучка текста на английском языке ex2
+$('div#questionWordCard').click(function(){
+    //скорость воспроизведения rate 0.5 1 1.5
+    //высота голоса pitch 0.5 1 1.5
+    let speechRate = $("input[name=speechRateEx2]:checked").val();
+    let speechPitch = $("input[name=speechPitchEx2]:checked").val();
+    let speechVoice = $("input[name=speechVoiceEx2]:checked").val();
+    responsiveVoice.speak($('div#questionWordCard').text(), speechVoice, {pitch:speechPitch, rate: speechRate});
+});
 
 //для пульта
 window.state = 0;
@@ -1086,4 +1106,10 @@ function showHideWordCard(state) {
 
 settingWordCard.click(function() {
     settingsForSecondEx.toggle();
+});
+
+//при изменении чекбоксов делается новый массив
+allCheckboxesWords2ex.click(function(){
+    allUsingWordsEx2 = [];
+    collectAllUsedCheckboxesEx2();
 });
